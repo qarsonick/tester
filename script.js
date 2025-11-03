@@ -1,6 +1,8 @@
 const scoreElements = document.querySelectorAll(".score-num");
 const startGame = document.querySelector(".start-game-btn");
 const result = document.querySelector(".result");
+// Новый элемент для заголовка экрана результатов
+const resultTitle = document.querySelector(".result .content h2"); 
 
 const canvas = document.querySelector(".canvas");
 
@@ -224,7 +226,7 @@ let player = new Player();
 let projectiles = [];
 let enemies = [];
 let particles = [];
-
+let spawnIntervalID; 
 
 function createImage(path) {
     const img = new Image();
@@ -233,7 +235,7 @@ function createImage(path) {
 }
 
 function spawnEnemies() {
-    setInterval(() => {
+    spawnIntervalID = setInterval(() => { 
         const position = { x: 0, y: 0 };
         if (Math.random() < 0.5) {
             position.x = Math.random() < 0.5 ? 0 - 256 : canvas.width + 85;
@@ -258,11 +260,16 @@ function spawnEnemies() {
 }
 
 function initGame() {
+    if (spawnIntervalID) clearInterval(spawnIntervalID); 
+    
     player = new Player();
     projectiles = [];
     enemies = [];
     particles = [];
     score = 0;
+    
+    resultTitle.innerHTML = "0"; 
+
     scoreElements.forEach(scoreEl => {
         scoreEl.innerHTML = score;
     });
@@ -309,10 +316,18 @@ function animate() {
         const dis = Math.hypot((midX - 10 )- enemy.cirX,
             (midY + 10) - enemy.cirY);
         if (dis - enemy.radius - 20 < 1) {
+            
+            // --- ЛОГИКА КОНЦА ИГРЫ ---
             cancelAnimationFrame(animateID);
+            clearInterval(spawnIntervalID); 
+            
+            resultTitle.innerHTML = "GAME OVER!"; 
+            
             scoreElements[1].innerHTML = score;
             canvas.style.display = "none";
             result.style.display = "block";
+            // ------------------------
+
         }
 
         projectiles.forEach((projectile, projectileIndex) => {
@@ -392,7 +407,19 @@ document.addEventListener('contextmenu', (e) => {
 });
 
 window.addEventListener("mousemove", (event) => {
-    const angle = Math.atan2(event.clientY - (midY), event.clientX - (midX - 15));
+    // Получаем реальные координаты холста относительно окна браузера
+    const rect = canvas.getBoundingClientRect();
+    
+    // Вычисляем фактические координаты центра игрока в масштабе окна
+    const playerCenterX = rect.left + midX - 15;
+    const playerCenterY = rect.top + midY;
+
+    // Рассчитываем угол относительно центра игрока (глобальные координаты)
+    const angle = Math.atan2(
+        event.clientY - playerCenterY, 
+        event.clientX - playerCenterX
+    );
+    
     player.rotation = angle;
 });
 
