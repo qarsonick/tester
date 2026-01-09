@@ -1,43 +1,22 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <title>Ваша Корзина</title>
+    <title>Кошик | TechGreen</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav class="cyber-nav">
-        <div class="burger" id="burger"><span></span><span></span><span></span></div>
-        <div class="logo">CART.SYS</div>
-    </nav>
-
-    <div class="menu" id="menu">
-        <a href="index.html">Главная</a>
-        <a href="cart.html">Корзина</a>
-    </div>
-
-    <section class="cart-page">
-        <h2 class="section-title">Оформление заказа</h2>
-        
-        <div id="cart-items" class="cart-list">
-            </div>
-
-        <div class="keypad-wrapper locked" id="keypad-wrapper">
-            <div class="lock-overlay" id="lock-msg">ДОСТУП ЗАПРЕЩЕН. НУЖНА РЕГИСТРАЦИЯ.</div>
-            <div class="keypad">
-                <div class="keypad__base"><img src="https://assets.codepen.io/605876/keypad-base.png"></div>
-                <button id="buy-btn" class="key keypad__double">
-                    <span class="key__text">ЗАКАЗАТЬ</span>
-                    <img src="https://assets.codepen.io/605876/keypad-double.png">
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <footer class="lava-footer">
-        <div class="bubbles" id="bubbles-container"></div>
-    </footer>
-
-    <script src="script.js"></script>
+    <header>
+        <nav>
+            <div class="logo"><a href="index.html" style="text-decoration:none; color:inherit;">TECH<span>GREEN</span></a></div>
+        </nav>
+    </header>
+    <main style="padding: 50px 5%;">
+        <h1>Ваш кошик</h1>
+        <div id="cart-items"></div>
+        <div id="cart-total" style="margin-top: 20px; font-size: 1.5rem;"></div>
+        <button id="checkout-btn" style="display:none;">Оформити замовлення</button>
+    </main>
+    <script src="cart.js"></script>
 </body>
 </html>
