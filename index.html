@@ -1,39 +1,54 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <title>Computer Shop</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC Parts Store | TechGreen</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <header>
+        <nav>
+            <div class="logo">TECH<span>GREEN</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Головна</a></li>
+                <li><a href="login.html">Вхід</a></li>
+                <li class="cart-icon">
+                    <a href="cart.html">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-count">0</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="burger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </nav>
+    </header>
 
-<header>
-  <div class="logo">🖥 TechShop</div>
-  <nav>
-    <a href="index.html">Главная</a>
-    <a href="cart.html">Корзина</a>
-    <a href="login.html">Вход</a>
-  </nav>
-</header>
+    <main>
+        <section class="hero">
+            <h1>Потужне залізо для твоїх перемог</h1>
+            <p>Найкращі комплектуючі за вигідними цінами</p>
+        </section>
 
-<main>
-  <section class="products">
-    <div class="product gradient-border">
-      <img src="images/products/laptop.jpg">
-      <h3>Ноутбук</h3>
-      <p>1200$</p>
-      <button onclick="addToCart('Ноутбук')">В корзину</button>
-    </div>
+        <section class="products" id="product-grid">
+            </section>
+    </main>
 
-    <div class="product gradient-border">
-      <img src="images/products/keyboard.jpg">
-      <h3>Клавиатура</h3>
-      <p>80$</p>
-      <button onclick="addToCart('Клавиатура')">В корзину</button>
-    </div>
-  </section>
-</main>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 TechGreen Shop. Всі права захищені.</p>
+            <div class="contacts">
+                <span>Email: support@techgreen.ua</span>
+                <span>Тел: +380 99 999 99 99</span>
+            </div>
+        </div>
+    </footer>
 
-<script src="js/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
