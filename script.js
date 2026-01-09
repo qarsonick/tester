@@ -1,14 +1,34 @@
 const products = [
-    { id: 1, name: "NVIDIA RTX 4090", price: 75000, cat: "GPU", desc: "24GB GDDR6X" },
-    { id: 2, name: "Intel Core i9-14900K", price: 24500, cat: "CPU", desc: "24 Cores" },
-    { id: 3, name: "ASUS Z790 ROG", price: 18000, cat: "MB", desc: "DDR5 Support" },
-    { id: 4, name: "Ryzen 7 7800X3D", price: 17000, cat: "CPU", desc: "Gaming King" },
-    { id: 5, name: "RTX 4060 Ti", price: 16000, cat: "GPU", desc: "8GB GDDR6" },
-    { id: 6, name: "Kraken Elite 360", price: 13000, cat: "Cool", desc: "Liquid Cooler" },
-    { id: 7, name: "Corsair 32GB DDR5", price: 6500, cat: "RAM", desc: "6000MHz" },
-    { id: 8, name: "Samsung 990 Pro 2TB", price: 8500, cat: "SSD", desc: "NVMe Gen4" },
-    { id: 9, name: "MSI B650 Tomahawk", price: 9500, cat: "MB", desc: "AM5 Socket" },
-    { id: 10, name: "Noctua NH-D15", price: 4500, cat: "Cool", desc: "Air Cooler" }
+    { 
+        id: 1, name: "NVIDIA RTX 4090", price: 75000, cat: "GPU", 
+        desc: "24GB GDDR6X - Найпотужніша відеокарта у світі для 4K геймінгу та професійного рендерингу.",
+        image: "https://images.unsplash.com/photo-1624701928517-44c8ac49d93c?q=80&w=400"
+    },
+    { 
+        id: 2, name: "Intel Core i9-14900K", price: 24500, cat: "CPU", 
+        desc: "24 ядра та 32 потоки з частотою до 6.0 GHz. Ідеальний вибір для геймерів та стрімерів.",
+        image: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?q=80&w=400"
+    },
+    { 
+        id: 3, name: "ASUS ROG Z790", price: 18000, cat: "MB", 
+        desc: "Материнська плата з посиленим живленням та підтримкою DDR5 пам'яті до 8000+ МГц.",
+        image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=400"
+    },
+    { 
+        id: 4, name: "NZXT Kraken Elite", price: 13000, cat: "Cool", 
+        desc: "Система рідинного охолодження з LCD-дисплеєм, що відображає температуру або GIF-анімації.",
+        image: "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?q=80&w=400"
+    },
+    { 
+        id: 5, name: "Corsair 64GB DDR5", price: 12000, cat: "RAM", 
+        desc: "Надшвидка оперативна пам'ять з RGB підсвіткою та низькими затримками CL32.",
+        image: "https://images.unsplash.com/photo-1562976540-1502c2145186?q=80&w=400"
+    },
+    { 
+        id: 6, name: "Samsung 990 Pro 2TB", price: 8500, cat: "SSD", 
+        desc: "Швидкість читання до 7450 МБ/с. Найкращий вибір для миттєвого завантаження ігор.",
+        image: "https://images.unsplash.com/photo-1597852074816-d933c4d2b988?q=80&w=400"
+    }
 ];
 
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -18,14 +38,30 @@ function displayProducts(items) {
     if (!grid) return;
     grid.innerHTML = items.map(p => `
         <div class="product-card">
-            <div class="cat-tag" style="color:var(--primary-green); font-size:0.7rem;">${p.cat}</div>
+            <div class="product-img-wrapper">
+                <img src="${p.image}" class="product-img" alt="${p.name}">
+            </div>
+            <div class="cat-tag">${p.cat}</div>
             <h3>${p.name}</h3>
-            <p style="opacity:0.7; font-size:0.9rem;">${p.desc}</p>
+            
+            <button class="details-btn" onclick="toggleDetails(${p.id})">ДЕТАЛЬНІШЕ <i class="fas fa-chevron-down"></i></button>
+            <div id="details-${p.id}" class="details-content">
+                <p>${p.desc}</p>
+            </div>
+
             <p class="price">${p.price} грн</p>
-            <button class="add-to-cart" onclick="addToCart(${p.id})">ДОДАТИ В КОШИК</button>
+            <button class="add-to-cart" onclick="addToCart(${p.id})">У КОШИК</button>
         </div>
     `).join('');
 }
+
+window.toggleDetails = function(id) {
+    const content = document.getElementById(`details-${id}`);
+    const btn = content.previousElementSibling;
+    
+    content.classList.toggle('active');
+    btn.classList.toggle('active');
+};
 
 window.filterProducts = function(category) {
     const filtered = category === 'all' ? products : products.filter(p => p.cat === category);
@@ -47,12 +83,12 @@ function updateCartCount() {
 function createLava() {
     const container = document.querySelector('.lava-container');
     if (!container) return;
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 15; i++) {
         const b = document.createElement('div');
         b.className = 'bubble';
         b.style.left = Math.random() * 100 + '%';
-        b.style.width = b.style.height = Math.random() * 60 + 20 + 'px';
-        b.style.animationDelay = Math.random() * 5 + 's';
+        b.style.width = b.style.height = Math.random() * 80 + 20 + 'px';
+        b.style.animationDuration = Math.random() * 5 + 7 + 's';
         container.appendChild(b);
     }
 }
