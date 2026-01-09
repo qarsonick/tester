@@ -4,31 +4,18 @@
     <meta charset="UTF-8">
     <title>Вхід | TechGreen</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        .login-form {
-            max-width: 400px;
-            margin: 100px auto;
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 10px;
-            border: 1px solid var(--primary-green);
-        }
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            background: #222;
-            border: 1px solid #444;
-            color: white;
-        }
-    </style>
 </head>
 <body>
-    <div class="login-form">
-        <h2>Вхід до аккаунту</h2>
-        <input type="text" placeholder="Логін">
-        <input type="password" placeholder="Пароль">
-        <button style="width:100%">Увійти</button>
-    </div>
+    <header>
+        <nav><div class="logo">TECH<span>GREEN</span></div></nav>
+    </header>
+    <main style="display: flex; align-items: center; justify-content: center;">
+        <div class="product-card" style="width: 100%; max-width: 400px;">
+            <h2>ВХІД</h2>
+            <input type="text" placeholder="Логін" style="width:100%; padding:10px; margin:10px 0; background:#222; border:1px solid #444; color:white;">
+            <input type="password" placeholder="Пароль" style="width:100%; padding:10px; margin:10px 0; background:#222; border:1px solid #444; color:white;">
+            <button class="add-to-cart">УВІЙТИ</button>
+        </div>
+    </main>
 </body>
 </html>
