@@ -1,123 +1,66 @@
-:root {
-    --bg-color: #0a0a0a;
-    --card-bg: #151515;
-    --primary-green: #00ff41;
-    --text-color: #e0e0e0;
-    --hover-green: #00cc33;
-}
-
-body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    overflow-x: hidden;
-}
-
-/* Навігація */
-header {
-    background: rgba(0, 0, 0, 0.9);
-    padding: 1rem 5%;
-    border-bottom: 2px solid var(--primary-green);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    letter-spacing: 2px;
-}
-
-.logo span {
+/* Ефект лавової лампи для футера */
+footer {
+    position: relative;
+    background: #000;
     color: var(--primary-green);
+    padding: 50px 0 20px 0;
+    overflow: hidden; /* Щоб бульбашки не вилазили за межі */
+    margin-top: 100px;
+    border-top: 1px solid var(--primary-green);
 }
 
-.nav-links {
+.lava-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: blur(20px); /* Створює ефект злиття бульбашок */
+    z-index: 0;
+}
+
+.bubble {
+    position: absolute;
+    background: var(--primary-green);
+    border-radius: 50%;
+    opacity: 0.3;
+    bottom: -50px;
+    animation: rise 10s infinite ease-in-out;
+}
+
+@keyframes rise {
+    0% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-100px) scale(1.2); }
+    100% { transform: translateY(-200px) scale(1); }
+}
+
+.footer-content {
+    position: relative;
+    z-index: 1; /* Текст поверх лави */
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+}
+
+/* Фільтри категорій */
+.category-filters {
     display: flex;
-    list-style: none;
-    gap: 20px;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+    flex-wrap: wrap;
 }
 
-.nav-links a {
-    color: white;
-    text-decoration: none;
+.filter-btn {
+    background: transparent;
+    border: 1px solid var(--primary-green);
+    color: var(--primary-green);
+    padding: 8px 15px;
+    cursor: pointer;
     transition: 0.3s;
 }
 
-.nav-links a:hover {
-    color: var(--primary-green);
-}
-
-/* Картки товарів */
-.products {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-    padding: 40px 5%;
-}
-
-.product-card {
-    background: var(--card-bg);
-    border: 1px solid #333;
-    border-radius: 10px;
-    padding: 20px;
-    text-align: center;
-    transition: transform 0.3s, border-color 0.3s;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 0.6s forwards;
-}
-
-.product-card:hover {
-    border-color: var(--primary-green);
-    transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
-}
-
-.product-card h3 {
-    color: var(--primary-green);
-}
-
-button {
+.filter-btn.active, .filter-btn:hover {
     background: var(--primary-green);
-    color: black;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-button:hover {
-    background: var(--hover-green);
-}
-
-/* Анімації */
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Бургер меню (мобільне) */
-.burger {
-    display: none;
-    cursor: pointer;
-}
-
-.burger div {
-    width: 25px;
-    height: 3px;
-    background-color: var(--primary-green);
-    margin: 5px;
+    color: #000;
 }
