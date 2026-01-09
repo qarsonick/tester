@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechGreen | PC Store</title>
+    <title>TechGreen | Головна</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -12,8 +12,9 @@
         <nav>
             <div class="logo">TECH<span>GREEN</span></div>
             <ul class="nav-links">
+                <li><a href="index.html">Головна</a></li>
                 <li class="dropdown">
-                    <button class="dropbtn"><i class="fas fa-bars"></i> КАТАЛОГ</button>
+                    <button class="dropbtn">КАТАЛОГ</button>
                     <div class="dropdown-content">
                         <button onclick="filterProducts('all')">Все залізо</button>
                         <button onclick="filterProducts('GPU')">Відеокарти</button>
@@ -23,7 +24,6 @@
                         <button onclick="filterProducts('RAM')">Пам'ять</button>
                     </div>
                 </li>
-                <li><a href="index.html">Головна</a></li>
                 <li><a href="login.html">Вхід</a></li>
                 <li class="cart-icon">
                     <a href="cart.html">
@@ -36,11 +36,18 @@
     </header>
 
     <main>
-        <section class="hero">
-            <h1>UPGRADE YOUR RIG</h1>
-            <p>Найкращі комплектуючі для твого ПК</p>
+        <section class="hero-section">
+            <div class="hero-text">
+                <h1>UPGRADE YOUR RIG</h1>
+                <p>TechGreen — ваш провідник у світ високопродуктивних систем. Ми пропонуємо лише перевірені компоненти для геймерів та професіоналів. Наша місія — забезпечити ваш ПК максимальною потужністю та стабільністю в будь-яких завданнях.</p>
+                <button class="add-to-cart" style="width: auto; padding: 15px 40px;" onclick="document.getElementById('catalog').scrollIntoView({behavior: 'smooth'})">ПЕРЕЙТИ ДО КАТАЛОГУ</button>
+            </div>
         </section>
-        <div id="product-grid" class="products"></div>
+
+        <section id="catalog">
+            <h2 style="text-align:center; margin: 50px 0; color: var(--primary-green); font-size: 2rem;">КАТАЛОГ КОМПЛЕКТУЮЧИХ</h2>
+            <div id="product-grid" class="products"></div>
+        </section>
     </main>
 
     <footer>
