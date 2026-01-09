@@ -1,66 +1,128 @@
-/* Ефект лавової лампи для футера */
-footer {
-    position: relative;
-    background: #000;
-    color: var(--primary-green);
-    padding: 50px 0 20px 0;
-    overflow: hidden; /* Щоб бульбашки не вилазили за межі */
-    margin-top: 100px;
-    border-top: 1px solid var(--primary-green);
+:root {
+    --primary-green: #00ff41;
+    --dark-bg: #0a0a0a;
+    --card-bg: #151515;
+    --text-color: #e0e0e0;
 }
 
-.lava-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    filter: blur(20px); /* Створює ефект злиття бульбашок */
-    z-index: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-.bubble {
-    position: absolute;
-    background: var(--primary-green);
-    border-radius: 50%;
-    opacity: 0.3;
-    bottom: -50px;
-    animation: rise 10s infinite ease-in-out;
-}
+html, body { height: 100%; }
 
-@keyframes rise {
-    0% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-100px) scale(1.2); }
-    100% { transform: translateY(-200px) scale(1); }
-}
-
-.footer-content {
-    position: relative;
-    z-index: 1; /* Текст поверх лави */
-    text-align: center;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-}
-
-/* Фільтри категорій */
-.category-filters {
+body {
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    font-family: 'Segoe UI', sans-serif;
     display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin: 20px 0;
-    flex-wrap: wrap;
+    flex-direction: column;
 }
 
-.filter-btn {
+main { flex: 1 0 auto; padding: 40px 5%; }
+
+header {
+    background: #000;
+    border-bottom: 2px solid var(--primary-green);
+    padding: 15px 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav { display: flex; justify-content: space-between; align-items: center; }
+
+.logo { font-size: 1.5rem; font-weight: bold; color: #fff; }
+.logo span { color: var(--primary-green); }
+
+.nav-links { list-style: none; display: flex; gap: 25px; align-items: center; }
+.nav-links a { color: #fff; text-decoration: none; transition: 0.3s; }
+.nav-links a:hover { color: var(--primary-green); }
+
+.dropdown { position: relative; display: inline-block; }
+.dropbtn {
     background: transparent;
     border: 1px solid var(--primary-green);
     color: var(--primary-green);
     padding: 8px 15px;
     cursor: pointer;
+    font-weight: bold;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: var(--card-bg);
+    min-width: 180px;
+    border: 1px solid var(--primary-green);
+    z-index: 100;
+}
+
+.dropdown-content button {
+    color: white;
+    padding: 12px 16px;
+    display: block;
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+}
+
+.dropdown-content button:hover { background: var(--primary-green); color: #000; }
+.dropdown:hover .dropdown-content { display: block; }
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.product-card {
+    background: var(--card-bg);
+    border: 1px solid #333;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
     transition: 0.3s;
 }
 
-.filter-btn.active, .filter-btn:hover {
+.product-card:hover { border-color: var(--primary-green); transform: translateY(-5px); }
+
+.price { color: var(--primary-green); font-size: 1.4rem; font-weight: bold; margin: 15px 0; }
+
+.add-to-cart {
     background: var(--primary-green);
     color: #000;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    font-weight: bold;
+    cursor: pointer;
 }
+
+footer {
+    flex-shrink: 0;
+    background: #000;
+    position: relative;
+    padding: 40px 0;
+    overflow: hidden;
+    border-top: 2px solid var(--primary-green);
+    text-align: center;
+}
+
+.lava-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; filter: blur(15px); }
+.bubble {
+    position: absolute;
+    background: var(--primary-green);
+    border-radius: 50%;
+    opacity: 0.2;
+    bottom: -50px;
+    animation: rise 8s infinite ease-in-out;
+}
+
+@keyframes rise {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-300px); }
+}
+
+.footer-content { position: relative; z-index: 1; }
