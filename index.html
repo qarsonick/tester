@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PC Parts Store | TechGreen</title>
-    <link rel="stylesheet" href="style.css">
+    <title>TechGreen | Магазин топового заліза</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <header>
         <nav>
             <div class="logo">TECH<span>GREEN</span></div>
-            <ul class="nav-links">
-                <li><a href="index.html">Головна</a></li>
-                <li><a href="login.html">Вхід</a></li>
+            
+            <ul class="nav-links" id="nav-menu">
+                <li><a href="index.html" class="active">Каталог</a></li>
+                <li><a href="login.html">Мій кабінет</a></li>
                 <li class="cart-icon">
                     <a href="cart.html">
                         <i class="fas fa-shopping-cart"></i>
@@ -21,7 +23,8 @@
                     </a>
                 </li>
             </ul>
-            <div class="burger">
+
+            <div class="burger" id="burger-menu">
                 <div class="line"></div>
                 <div class="line"></div>
                 <div class="line"></div>
@@ -31,20 +34,62 @@
 
     <main>
         <section class="hero">
-            <h1>Потужне залізо для твоїх перемог</h1>
-            <p>Найкращі комплектуючі за вигідними цінами</p>
+            <div class="hero-content">
+                <h1>UPGRADE YOUR RIG</h1>
+                <p>Найкращі комплектуючі для геймінгу та роботи в одному місці</p>
+            </div>
         </section>
 
-        <section class="products" id="product-grid">
-            </section>
+        <div class="filter-section">
+            <h2 class="section-title">Категорії товарів</h2>
+            <div class="category-filters">
+                <button class="filter-btn active" onclick="filterSelection('all', this)">Все залізо</button>
+                <button class="filter-btn" onclick="filterSelection('GPU', this)">Відеокарти</button>
+                <button class="filter-btn" onclick="filterSelection('CPU', this)">Процесори</button>
+                <button class="filter-btn" onclick="filterSelection('MB', this)">Материнки</button>
+                <button class="filter-btn" onclick="filterSelection('Cool', this)">Охолодження</button>
+                <button class="filter-btn" onclick="filterSelection('RAM', this)">Пам'ять</button>
+            </div>
+        </div>
+
+        <section class="products-container">
+            <div class="products" id="product-grid">
+                </div>
+        </section>
     </main>
 
     <footer>
+        <div class="lava-container">
+            </div>
+        
         <div class="footer-content">
-            <p>&copy; 2026 TechGreen Shop. Всі права захищені.</p>
-            <div class="contacts">
-                <span>Email: support@techgreen.ua</span>
-                <span>Тел: +380 99 999 99 99</span>
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3 class="logo">TECH<span>GREEN</span></h3>
+                    <p>Ми знаємо все про FPS та стабільну роботу вашого ПК. Тільки оригінальна продукція з гарантією.</p>
+                </div>
+                
+                <div class="footer-contacts">
+                    <h4>Контакти</h4>
+                    <ul>
+                        <li><i class="fas fa-phone-alt"></i> +380 44 123 45 67</li>
+                        <li><i class="fas fa-envelope"></i> sales@techgreen.ua</li>
+                        <li><i class="fas fa-map-marker-alt"></i> м. Київ, вул. Кібернетична, 101</li>
+                    </ul>
+                </div>
+
+                <div class="footer-social">
+                    <h4>Ми в мережах</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 TechGreen Computer Systems. Made for gamers.</p>
             </div>
         </div>
     </footer>
