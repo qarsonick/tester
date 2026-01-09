@@ -1,50 +1,63 @@
 const products = [
-    { id: 1, name: "NVIDIA RTX 4090", price: 75000, category: "GPU" },
-    { id: 2, name: "Intel Core i9-14900K", price: 24000, category: "CPU" },
-    { id: 3, name: "ASUS ROG Z790", price: 18000, category: "Motherboard" },
-    { id: 4, name: "Samsung 990 Pro 2TB", price: 8500, category: "SSD" },
-    { id: 5, name: "Corsair Dominator 32GB DDR5", price: 7200, category: "RAM" },
-    { id: 6, name: "be quiet! Dark Power 13", price: 9000, category: "PSU" }
+    // Відеокарти
+    { id: 1, name: "NVIDIA RTX 4090", price: 75000, cat: "GPU", desc: "24GB GDDR6X" },
+    { id: 2, name: "AMD Radeon RX 7900 XTX", price: 42000, cat: "GPU", desc: "24GB GDDR6" },
+    { id: 3, name: "NVIDIA RTX 4070 Ti", price: 34000, cat: "GPU", desc: "12GB GDDR6X" },
+    
+    // Процесори
+    { id: 4, name: "Intel Core i9-14900K", price: 24500, cat: "CPU", desc: "24 Cores / 32 Threads" },
+    { id: 5, name: "AMD Ryzen 7 7800X3D", price: 16800, cat: "CPU", desc: "Best for Gaming" },
+    { id: 6, name: "Intel Core i5-13600K", price: 12000, cat: "CPU", desc: "14 Cores" },
+
+    // Материнські плати
+    { id: 7, name: "ASUS ROG MAXIMUS Z790", price: 28000, cat: "MB", desc: "LGA1700, DDR5" },
+    { id: 8, name: "MSI MPG B650 Carbon", price: 11500, cat: "MB", desc: "AM5, WiFi 6E" },
+
+    // Охолодження
+    { id: 9, name: "NZXT Kraken Elite 360", price: 13000, cat: "Cool", desc: "Liquid Cooler with LCD" },
+    { id: 10, name: "Noctua NH-D15 chromax.black", price: 4800, cat: "Cool", desc: "Air Cooler" },
+    
+    // Оперативна пам'ять
+    { id: 11, name: "G.Skill Trident Z5 32GB", price: 6500, cat: "RAM", desc: "DDR5-6000MHz" },
+    { id: 12, name: "Kingston FURY Beast 16GB", price: 2800, cat: "RAM", desc: "DDR4-3200MHz" }
 ];
 
 const productGrid = document.getElementById('product-grid');
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-function renderProducts() {
+function renderProducts(filter = 'all') {
     if(!productGrid) return;
-    productGrid.innerHTML = products.map((product, index) => `
-        <div class="product-card" style="animation-delay: ${index * 0.1}s">
-            <i class="fas fa-microchip style="font-size: 3rem; color: #444;"></i>
-            <h3>${product.name}</h3>
-            <p>Ціна: ${product.price} грн</p>
-            <button onclick="addToCart(${product.id})">Додати в кошик</button>
+    
+    const filtered = filter === 'all' ? products : products.filter(p => p.cat === filter);
+    
+    productGrid.innerHTML = filtered.map((p, i) => `
+        <div class="product-card" style="animation-delay: ${i * 0.05}s">
+            <div class="cat-tag">${p.cat}</div>
+            <h3>${p.name}</h3>
+            <p style="font-size: 0.8rem; color: #888;">${p.desc}</p>
+            <p class="price">${p.price} грн</p>
+            <button onclick="addToCart(${p.id})">В кошик</button>
         </div>
     `).join('');
 }
 
-function addToCart(id) {
-    const product = products.find(p => p.id === id);
-    cart.push(product);
-    localStorage.setItem('cart', JSON.stringify(cart));
-    updateCartCount();
-    alert(`${product.name} додано до кошика!`);
+// Додаємо бульбашки для футера
+function createLava() {
+    const container = document.querySelector('.lava-container');
+    if(!container) return;
+    for(let i = 0; i < 15; i++) {
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble';
+        const size = Math.random() * 60 + 20 + 'px';
+        bubble.style.width = size;
+        bubble.style.height = size;
+        bubble.style.left = Math.random() * 100 + '%';
+        bubble.style.animationDuration = Math.random() * 5 + 5 + 's';
+        bubble.style.animationDelay = Math.random() * 5 + 's';
+        container.appendChild(bubble);
+    }
 }
 
-function updateCartCount() {
-    const countElement = document.getElementById('cart-count');
-    if(countElement) countElement.innerText = cart.length;
-}
-
-// Burger menu logic
-const burger = document.querySelector('.burger');
-const nav = document.querySelector('.nav-links');
-
-if(burger) {
-    burger.addEventListener('click', () => {
-        nav.classList.toggle('nav-active');
-        burger.classList.toggle('toggle');
-    });
-}
-
-renderProducts();
-updateCartCount();
+document.addEventListener('DOMContentLoaded', () => {
+    renderProducts();
+    createLava();
+});
