@@ -1,105 +1,123 @@
 :root {
-  --bg: #0b0f0c;
-  --green: #00ff88;
-  --green-dark: #00cc6a;
-  --text: #e6fff2;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Raleway', sans-serif;
+    --bg-color: #0a0a0a;
+    --card-bg: #151515;
+    --primary-green: #00ff41;
+    --text-color: #e0e0e0;
+    --hover-green: #00cc33;
 }
 
 body {
-  background: var(--bg);
-  color: var(--text);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    overflow-x: hidden;
 }
 
-/* ---------- HEADER ---------- */
+/* Навігація */
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  border-bottom: 1px solid var(--green);
+    background: rgba(0, 0, 0, 0.9);
+    padding: 1rem 5%;
+    border-bottom: 2px solid var(--primary-green);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo {
-  font-size: 24px;
-  color: var(--green);
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 2px;
 }
 
-nav a {
-  color: var(--text);
-  margin-left: 20px;
-  text-decoration: none;
+.logo span {
+    color: var(--primary-green);
 }
 
-nav a:hover {
-  color: var(--green);
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 20px;
 }
 
-/* ---------- КАРТОЧКИ ТОВАРОВ ---------- */
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary-green);
+}
+
+/* Картки товарів */
 .products {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  padding: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    padding: 40px 5%;
 }
 
-.product {
-  background: #111;
-  border-radius: 10px;
-  padding: 15px;
-  border: 1px solid var(--green-dark);
+.product-card {
+    background: var(--card-bg);
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s, border-color 0.3s;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.6s forwards;
 }
 
-.product img {
-  width: 100%;
-  border-radius: 8px;
+.product-card:hover {
+    border-color: var(--primary-green);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
 }
 
-.product button {
-  margin-top: 10px;
-  width: 100%;
-  padding: 10px;
-  background: var(--green);
-  border: none;
-  cursor: pointer;
+.product-card h3 {
+    color: var(--primary-green);
 }
 
-.product button:hover {
-  background: var(--green-dark);
+button {
+    background: var(--primary-green);
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
 }
 
-/* ---------- ТВОЙ ГРАДИЕНТ ---------- */
-.gradient-border {
-  --borderWidth: 3px;
-  position: relative;
-  border-radius: var(--borderWidth);
+button:hover {
+    background: var(--hover-green);
 }
 
-.gradient-border::after {
-  content: '';
-  position: absolute;
-  inset: -3px;
-  background: linear-gradient(
-    60deg,
-    #00ff88,
-    #00cc6a,
-    #00ffcc,
-    #00ff88
-  );
-  border-radius: 6px;
-  z-index: -1;
-  animation: animatedgradient 3s ease infinite;
-  background-size: 300% 300%;
+/* Анімації */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-@keyframes animatedgradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* Бургер меню (мобільне) */
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--primary-green);
+    margin: 5px;
 }
