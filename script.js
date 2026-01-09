@@ -1,63 +1,64 @@
 const products = [
-    // Відеокарти
     { id: 1, name: "NVIDIA RTX 4090", price: 75000, cat: "GPU", desc: "24GB GDDR6X" },
-    { id: 2, name: "AMD Radeon RX 7900 XTX", price: 42000, cat: "GPU", desc: "24GB GDDR6" },
-    { id: 3, name: "NVIDIA RTX 4070 Ti", price: 34000, cat: "GPU", desc: "12GB GDDR6X" },
-    
-    // Процесори
-    { id: 4, name: "Intel Core i9-14900K", price: 24500, cat: "CPU", desc: "24 Cores / 32 Threads" },
-    { id: 5, name: "AMD Ryzen 7 7800X3D", price: 16800, cat: "CPU", desc: "Best for Gaming" },
-    { id: 6, name: "Intel Core i5-13600K", price: 12000, cat: "CPU", desc: "14 Cores" },
-
-    // Материнські плати
-    { id: 7, name: "ASUS ROG MAXIMUS Z790", price: 28000, cat: "MB", desc: "LGA1700, DDR5" },
-    { id: 8, name: "MSI MPG B650 Carbon", price: 11500, cat: "MB", desc: "AM5, WiFi 6E" },
-
-    // Охолодження
-    { id: 9, name: "NZXT Kraken Elite 360", price: 13000, cat: "Cool", desc: "Liquid Cooler with LCD" },
-    { id: 10, name: "Noctua NH-D15 chromax.black", price: 4800, cat: "Cool", desc: "Air Cooler" },
-    
-    // Оперативна пам'ять
-    { id: 11, name: "G.Skill Trident Z5 32GB", price: 6500, cat: "RAM", desc: "DDR5-6000MHz" },
-    { id: 12, name: "Kingston FURY Beast 16GB", price: 2800, cat: "RAM", desc: "DDR4-3200MHz" }
+    { id: 2, name: "Intel Core i9-14900K", price: 24500, cat: "CPU", desc: "24 Cores" },
+    { id: 3, name: "ASUS Z790 ROG", price: 18000, cat: "MB", desc: "DDR5 Support" },
+    { id: 4, name: "Ryzen 7 7800X3D", price: 17000, cat: "CPU", desc: "Gaming King" },
+    { id: 5, name: "RTX 4060 Ti", price: 16000, cat: "GPU", desc: "8GB GDDR6" },
+    { id: 6, name: "Kraken Elite 360", price: 13000, cat: "Cool", desc: "Liquid Cooler" },
+    { id: 7, name: "Corsair 32GB DDR5", price: 6500, cat: "RAM", desc: "6000MHz" },
+    { id: 8, name: "Samsung 990 Pro 2TB", price: 8500, cat: "SSD", desc: "NVMe Gen4" },
+    { id: 9, name: "MSI B650 Tomahawk", price: 9500, cat: "MB", desc: "AM5 Socket" },
+    { id: 10, name: "Noctua NH-D15", price: 4500, cat: "Cool", desc: "Air Cooler" }
 ];
 
-const productGrid = document.getElementById('product-grid');
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-function renderProducts(filter = 'all') {
-    if(!productGrid) return;
-    
-    const filtered = filter === 'all' ? products : products.filter(p => p.cat === filter);
-    
-    productGrid.innerHTML = filtered.map((p, i) => `
-        <div class="product-card" style="animation-delay: ${i * 0.05}s">
-            <div class="cat-tag">${p.cat}</div>
+function displayProducts(items) {
+    const grid = document.getElementById('product-grid');
+    if (!grid) return;
+    grid.innerHTML = items.map(p => `
+        <div class="product-card">
+            <div class="cat-tag" style="color:var(--primary-green); font-size:0.7rem;">${p.cat}</div>
             <h3>${p.name}</h3>
-            <p style="font-size: 0.8rem; color: #888;">${p.desc}</p>
+            <p style="opacity:0.7; font-size:0.9rem;">${p.desc}</p>
             <p class="price">${p.price} грн</p>
-            <button onclick="addToCart(${p.id})">В кошик</button>
+            <button class="add-to-cart" onclick="addToCart(${p.id})">ДОДАТИ В КОШИК</button>
         </div>
     `).join('');
 }
 
-// Додаємо бульбашки для футера
+window.filterProducts = function(category) {
+    const filtered = category === 'all' ? products : products.filter(p => p.cat === category);
+    displayProducts(filtered);
+};
+
+window.addToCart = function(id) {
+    const item = products.find(p => p.id === id);
+    cart.push(item);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+};
+
+function updateCartCount() {
+    const count = document.getElementById('cart-count');
+    if (count) count.innerText = cart.length;
+}
+
 function createLava() {
     const container = document.querySelector('.lava-container');
-    if(!container) return;
-    for(let i = 0; i < 15; i++) {
-        const bubble = document.createElement('div');
-        bubble.className = 'bubble';
-        const size = Math.random() * 60 + 20 + 'px';
-        bubble.style.width = size;
-        bubble.style.height = size;
-        bubble.style.left = Math.random() * 100 + '%';
-        bubble.style.animationDuration = Math.random() * 5 + 5 + 's';
-        bubble.style.animationDelay = Math.random() * 5 + 's';
-        container.appendChild(bubble);
+    if (!container) return;
+    for (let i = 0; i < 10; i++) {
+        const b = document.createElement('div');
+        b.className = 'bubble';
+        b.style.left = Math.random() * 100 + '%';
+        b.style.width = b.style.height = Math.random() * 60 + 20 + 'px';
+        b.style.animationDelay = Math.random() * 5 + 's';
+        container.appendChild(b);
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    renderProducts();
+    displayProducts(products);
+    updateCartCount();
     createLava();
 });
