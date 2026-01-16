@@ -28,7 +28,7 @@ const products = [
     { 
         id: 6, name: "Intel Core i5-13600K", price: 13200, cat: "CPU", 
         desc: "14 ядер. Збалансований варіант для потужного ігрового ПК середнього сегменту.",
-        image: "https://images.unsplash.com/photo-1580519542036-c47de6196ba5?q=80&w=400"
+        image: "https://defis.ua/image/cache/catalog/2/23/23569_1-xW.jpg"
     },
 
     { 
