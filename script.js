@@ -39,12 +39,12 @@ const products = [
     { 
         id: 8, name: "MSI MAG B650 Tomahawk", price: 9200, cat: "MB", 
         desc: "Надійна плата для сокета AM5 (Ryzen 7000/8000). Відмінне охолодження фаз живлення.",
-        image: "https://images.unsplash.com/photo-1551448579-f480c527b15a?q=80&w=400"
+        image: "https://cdn.27.ua/sc--media--prod/default/26/eb/80/26eb8073-a939-40f2-b47e-e89917be1edc.jpg8579-f480c527b15a?q=80&w=400"
     },
     { 
         id: 13, name: "Gigabyte Z790 AORUS ELITE", price: 11500, cat: "MB", 
         desc: "Висока якість збірки, підтримка DDR5 7600MHz та потужний VRM для розгону.",
-        image: "https://images.unsplash.com/photo-1563206767-5b18f218e0de?q=80&w=400"
+        image: "https://www.gigabyte.com/FileUpload/Global/KeyFeature/2203/innergigabyteimages/specsmall02.jpg"
     },
 
     { 
