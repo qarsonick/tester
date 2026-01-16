@@ -60,7 +60,7 @@ const products = [
     { 
         id: 14, name: "Kingston FURY Beast 16GB", price: 2900, cat: "RAM", 
         desc: "DDR5 5600MHz. Надійний і доступний вибір для сучасної ігрової системи.",
-        image: "https://images.unsplash.com/photo-1551448579-f480c527b15a?q=80&w=400"
+        image: "https://hyperpc.kz/images/catalog/hardware/memory/kingston/beast-rgb-ddr5/kingston-fury-beast-rgb-ddr5-5200-2x16gb.jpg"
     },
 
     { 
