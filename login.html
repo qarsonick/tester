@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Вхід | TechGreen</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
     <header>
@@ -11,12 +12,54 @@
     </header>
     <main style="display: flex; align-items: center; justify-content: center;">
         <div class="product-card" style="width: 100%; max-width: 400px; padding: 40px;">
-            <h2 style="color: var(--primary-green); margin-bottom: 25px;">ВХІД</h2>
-            <input type="text" placeholder="Електронна пошта" style="width:100%; padding:12px; margin-bottom:15px; background:#222; border:1px solid #444; color:white; border-radius:4px;">
-            <input type="password" placeholder="Пароль" style="width:100%; padding:12px; margin-bottom:20px; background:#222; border:1px solid #444; color:white; border-radius:4px;">
-            <button class="add-to-cart">УВІЙТИ В АКАУНТ</button>
-            <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.6;">Немає акаунту? <a href="#" style="color: var(--primary-green);">Реєстрація</a></p>
+            <h2 style="color: var(--primary-green); margin-bottom: 25px;">ВХІД / РЕЄСТРАЦІЯ</h2>
+            
+            <input type="email" id="email" placeholder="Електронна пошта" style="width:100%; padding:12px; margin-bottom:15px; background:#222; border:1px solid #444; color:white; border-radius:4px;">
+            <input type="password" id="password" placeholder="Пароль" style="width:100%; padding:12px; margin-bottom:20px; background:#222; border:1px solid #444; color:white; border-radius:4px;">
+            
+            <button class="add-to-cart" id="btn-login" style="margin-bottom: 10px;">УВІЙТИ</button>
+            <button class="add-to-cart" id="btn-signup" style="background: transparent; border: 1px solid var(--primary-green); color: var(--primary-green);">ЗАРЕЄСТРУВАТИСЯ</button>
+            
+            <p id="auth-msg" style="margin-top: 20px; font-size: 0.8rem; text-align: center;"></p>
         </div>
     </main>
+
+    <script>
+        const supabaseUrl = 'https://sfjflexlezpamgzetkwb.supabase.co';
+        const supabaseKey = 'sb_secret_O1R5q-5WNypmh4T_i5TYtg_OmYaowWV';
+        const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const msg = document.getElementById('auth-msg');
+
+        // РЕГИСТРАЦИЯ
+        document.getElementById('btn-signup').onclick = async () => {
+            const { data, error } = await supabase.auth.signUp({
+                email: emailInput.value,
+                password: passwordInput.value,
+            });
+            if (error) {
+                msg.style.color = "red";
+                msg.innerText = "Помилка: " + error.message;
+            } else {
+                msg.style.color = "var(--primary-green)";
+                msg.innerText = "Успіх! Перевір пошту для підтвердження.";
+            }
+        };
+
+        document.getElementById('btn-login').onclick = async () => {
+            const { data, error } = await supabase.auth.signInWithPassword({
+                email: emailInput.value,
+                password: passwordInput.value,
+            });
+            if (error) {
+                msg.style.color = "red";
+                msg.innerText = "Помилка: " + error.message;
+            } else {
+                window.location.href = "index.html";
+            }
+        };
+    </script>
 </body>
 </html>
