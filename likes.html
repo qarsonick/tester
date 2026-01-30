@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Вподобання | TechGreen</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo"><a href="index.html">TECH<span>GREEN</span></a></div>
+            <a href="index.html" class="login-btn">НАЗАД</a>
+        </nav>
+    </header>
+    <main>
+        <h2 class="section-title" style="margin-top: 50px;">ОБРАНІ ТОВАРИ</h2>
+        <div id="likes-grid" class="products"></div>
+    </main>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('likes-grid');
+            let likes = JSON.parse(localStorage.getItem('likes')) || [];
+            if (likes.length === 0) {
+                grid.innerHTML = "<p style='color:gray; text-align:center; width:100%;'>Тут поки порожньо...</p>";
+                return;
+            }
+            grid.innerHTML = likes.map(p => `
+                <div class="product-card">
+                    <img src="${p.image}" class="product-img">
+                    <h3>${p.name}</h3>
+                    <p class="price">${p.price} грн</p>
+                    <button class="add-to-cart" onclick="removeFromLikes(${p.id})">ВИДАЛИТИ</button>
+                </div>
+            `).join('');
+        });
+        window.removeFromLikes = function(id) {
+            let likes = JSON.parse(localStorage.getItem('likes')) || [];
+            likes = likes.filter(p => p.id !== id);
+            localStorage.setItem('likes', JSON.stringify(likes));
+            location.reload();
+        };
+    </script>
+</body>
+</html>
