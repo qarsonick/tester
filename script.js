@@ -1,83 +1,19 @@
 const products = [
-    { 
-        id: 1, name: "NVIDIA RTX 4090", price: 75000, cat: "GPU", 
-        desc: "24GB GDDR6X. Найпотужніша карта для 4K. Підтримка Ray Tracing та DLSS 3.",
-        image: "https://images.unsplash.com/photo-1624701928517-44c8ac49d93c?q=80&w=400"
-    },
-    { 
-        id: 2, name: "ASUS TUF RTX 4070 Ti", price: 38000, cat: "GPU", 
-        desc: "12GB GDDR6X. Надійне охолодження, ідеально для 2K геймінгу на ультра-налаштуваннях.",
-        image: "https://images.unsplash.com/photo-1587202372634-32705e3bf49c?q=80&w=400"
-    },
-    { 
-        id: 3, name: "MSI Ventus RTX 4060", price: 14500, cat: "GPU", 
-        desc: "8GB GDDR6. Енергоефективна карта для стабільного геймінгу в Full HD.",
-        image: "https://images.unsplash.com/photo-1555617766-c94804975da3?q=80&w=400"
-    },
-
-    { 
-        id: 4, name: "Intel Core i9-14900K", price: 24500, cat: "CPU", 
-        desc: "24 ядра, до 6.0 GHz. Топовий вибір для ігор та рендерингу.",
-        image: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?q=80&w=400"
-    },
-    { 
-        id: 5, name: "AMD Ryzen 7 7800X3D", price: 17500, cat: "CPU", 
-        desc: "8 ядер, 3D V-Cache. Найкращий ігровий процесор за версією більшості геймерів.",
-        image: "https://images.unsplash.com/photo-1555617766-c94804975da3?q=80&w=400"
-    },
-    { 
-        id: 6, name: "Intel Core i5-13600K", price: 13200, cat: "CPU", 
-        desc: "14 ядер. Збалансований варіант для потужного ігрового ПК середнього сегменту.",
-        image: "https://defis.ua/image/cache/catalog/2/23/23569_1-xW.jpg"
-    },
-
-    { 
-        id: 7, name: "ASUS ROG Z790-E", price: 18000, cat: "MB", 
-        desc: "Підтримка DDR5, Wi-Fi 6E, PCIe 5.0. Преміальна база для Intel 14-го покоління.",
-        image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=400"
-    },
-    { 
-        id: 8, name: "MSI MAG B650 Tomahawk", price: 9200, cat: "MB", 
-        desc: "Надійна плата для сокета AM5 (Ryzen 7000/8000). Відмінне охолодження фаз живлення.",
-        image: "https://u-misti.zhitomir.ua/wp-content/uploads/2026/01/materynska-plata.webp"
-    },
-    { 
-        id: 13, name: "Gigabyte Z790 AORUS ELITE", price: 11500, cat: "MB", 
-        desc: "Висока якість збірки, підтримка DDR5 7600MHz та потужний VRM для розгону.",
-        image: "https://www.gigabyte.com/FileUpload/Global/KeyFeature/2203/innergigabyteimages/specsmall02.jpg"
-    },
-
-    { 
-        id: 9, name: "Corsair Vengeance 32GB", price: 5800, cat: "RAM", 
-        desc: "DDR5 6000MHz CL36. Компактні радіатори та висока швидкість роботи.",
-        image: "https://images.unsplash.com/photo-1562976540-1502c2145186?q=80&w=400"
-    },
-    { 
-        id: 10, name: "G.Skill Trident Z5 RGB 32GB", price: 7200, cat: "RAM", 
-        desc: "DDR5 7200MHz. Неймовірна швидкість та найкраща RGB підсвітка.",
-        image: "https://images.unsplash.com/photo-1541029071515-84cc54f84dc5?q=80&w=400"
-    },
-    { 
-        id: 14, name: "Kingston FURY Beast 16GB", price: 2900, cat: "RAM", 
-        desc: "DDR5 5600MHz. Надійний і доступний вибір для сучасної ігрової системи.",
-        image: "https://hyperpc.kz/images/catalog/hardware/memory/kingston/beast-rgb-ddr5/kingston-fury-beast-rgb-ddr5-5200-2x16gb.jpg"
-    },
-
-    { 
-        id: 11, name: "NZXT Kraken Elite 360", price: 13000, cat: "Cool", 
-        desc: "Рідинне охолодження з LCD дисплеєм. Повний контроль температур у реальному часі.",
-        image: "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?q=80&w=400"
-    },
-    { 
-        id: 12, name: "Noctua NH-D15 chromax.black", price: 4600, cat: "Cool", 
-        desc: "Легендарне повітряне охолодження. Тихіше та ефективніше за багато СРО.",
-        image: "https://images.unsplash.com/photo-1555680202-c86f0e12f086?q=80&w=400"
-    },
-    { 
-        id: 15, name: "DeepCool AK620 Digital", price: 3400, cat: "Cool", 
-        desc: "Потужний повітряний кулер з цифровим дисплеєм температури процесора.",
-        image: "https://images.unsplash.com/photo-1591488320449-011701bb6704?q=80&w=400"
-    }
+    { id: 1, name: "NVIDIA RTX 4090", price: 75000, cat: "GPU", desc: "24GB GDDR6X. Найпотужніша карта для 4K. Підтримка Ray Tracing та DLSS 3.", image: "https://images.unsplash.com/photo-1624701928517-44c8ac49d93c?q=80&w=400", images: ["https://images.unsplash.com/photo-1624701928517-44c8ac49d93c?q=80&w=400"] },
+    { id: 2, name: "ASUS TUF RTX 4070 Ti", price: 38000, cat: "GPU", desc: "12GB GDDR6X. Надійне охолодження, ідеально для 2K геймінгу на ультра-налаштуваннях.", image: "https://images.unsplash.com/photo-1587202372634-32705e3bf49c?q=80&w=400", images: ["https://images.unsplash.com/photo-1587202372634-32705e3bf49c?q=80&w=400"] },
+    { id: 3, name: "MSI Ventus RTX 4060", price: 14500, cat: "GPU", desc: "8GB GDDR6. Енергоефективна карта для стабільного геймінгу в Full HD.", image: "https://images.unsplash.com/photo-1555617766-c94804975da3?q=80&w=400", images: ["https://images.unsplash.com/photo-1555617766-c94804975da3?q=80&w=400"] },
+    { id: 4, name: "Intel Core i9-14900K", price: 24500, cat: "CPU", desc: "24 ядра, до 6.0 GHz. Топовий вибір для ігор та рендерингу.", image: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?q=80&w=400", images: ["https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?q=80&w=400"] },
+    { id: 5, name: "AMD Ryzen 7 7800X3D", price: 17500, cat: "CPU", desc: "8 ядер, 3D V-Cache. Найкращий ігровий процесор за версією більшості геймерів.", image: "https://images.unsplash.com/photo-1555617766-c94804975da3?q=80&w=400", images: ["https://images.unsplash.com/photo-1555617766-c94804975da3?q=80&w=400"] },
+    { id: 6, name: "Intel Core i5-13600K", price: 13200, cat: "CPU", desc: "14 ядер. Збалансований варіант для потужного ігрового ПК середнього сегменту.", image: "https://defis.ua/image/cache/catalog/2/23/23569_1-xW.jpg", images: ["https://defis.ua/image/cache/catalog/2/23/23569_1-xW.jpg"] },
+    { id: 7, name: "ASUS ROG Z790-E", price: 18000, cat: "MB", desc: "Підтримка DDR5, Wi-Fi 6E, PCIe 5.0. Преміальна база для Intel 14-го покоління.", image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=400", images: ["https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=400"] },
+    { id: 8, name: "MSI MAG B650 Tomahawk", price: 9200, cat: "MB", desc: "Надійна плата для сокета AM5 (Ryzen 7000/8000). Відмінне охолодження фаз живлення.", image: "https://u-misti.zhitomir.ua/wp-content/uploads/2026/01/materynska-plata.webp", images: ["https://u-misti.zhitomir.ua/wp-content/uploads/2026/01/materynska-plata.webp"] },
+    { id: 13, name: "Gigabyte Z790 AORUS ELITE", price: 11500, cat: "MB", desc: "Висока якість збірки, підтримка DDR5 7600MHz та потужний VRM для розгону.", image: "https://www.gigabyte.com/FileUpload/Global/KeyFeature/2203/innergigabyteimages/specsmall02.jpg", images: ["https://www.gigabyte.com/FileUpload/Global/KeyFeature/2203/innergigabyteimages/specsmall02.jpg"] },
+    { id: 9, name: "Corsair Vengeance 32GB", price: 5800, cat: "RAM", desc: "DDR5 6000MHz CL36. Компактні радіатори та висока швидкість роботи.", image: "https://images.unsplash.com/photo-1562976540-1502c2145186?q=80&w=400", images: ["https://images.unsplash.com/photo-1562976540-1502c2145186?q=80&w=400"] },
+    { id: 10, name: "G.Skill Trident Z5 RGB 32GB", price: 7200, cat: "RAM", desc: "DDR5 7200MHz. Неймовірна швидкість та найкраща RGB підсвітка.", image: "https://images.unsplash.com/photo-1541029071515-84cc54f84dc5?q=80&w=400", images: ["https://images.unsplash.com/photo-1541029071515-84cc54f84dc5?q=80&w=400"] },
+    { id: 14, name: "Kingston FURY Beast 16GB", price: 2900, cat: "RAM", desc: "DDR5 5600MHz. Надійний і доступний вибір для сучасної ігрової системи.", image: "https://hyperpc.kz/images/catalog/hardware/memory/kingston/beast-rgb-ddr5/kingston-fury-beast-rgb-ddr5-5200-2x16gb.jpg", images: ["https://hyperpc.kz/images/catalog/hardware/memory/kingston/beast-rgb-ddr5/kingston-fury-beast-rgb-ddr5-5200-2x16gb.jpg"] },
+    { id: 11, name: "NZXT Kraken Elite 360", price: 13000, cat: "Cool", desc: "Рідинне охолодження з LCD дисплеєм. Повний контроль температур у реальному часі.", image: "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?q=80&w=400", images: ["https://images.unsplash.com/photo-1587202372775-e229f172b9d7?q=80&w=400"] },
+    { id: 12, name: "Noctua NH-D15 chromax.black", price: 4600, cat: "Cool", desc: "Легендарне повітряне охолодження. Тихіше та ефективніше за багато СРО.", image: "https://images.unsplash.com/photo-1555680202-c86f0e12f086?q=80&w=400", images: ["https://images.unsplash.com/photo-1555680202-c86f0e12f086?q=80&w=400"] },
+    { id: 15, name: "DeepCool AK620 Digital", price: 3400, cat: "Cool", desc: "Потужний повітряний кулер з цифровим дисплеєм температури процесора.", image: "https://images.unsplash.com/photo-1591488320449-011701bb6704?q=80&w=400", images: ["https://images.unsplash.com/photo-1591488320449-011701bb6704?q=80&w=400"] }
 ];
 
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -93,28 +29,49 @@ function displayProducts(items) {
             </div>
             <div class="cat-tag">${p.cat}</div>
             <h3>${p.name}</h3>
-            
-            <button class="details-btn" onclick="toggleDetails(${p.id})">
-                ДЕТАЛЬНІШЕ <i class="fas fa-chevron-down"></i>
+            <button class="details-btn" onclick="openModal(${p.id})">
+                ДЕТАЛЬНІШЕ <i class="fas fa-expand-alt"></i>
             </button>
-            
-            <div id="details-${p.id}" class="details-content">
-                <p>${p.desc}</p>
-            </div>
-
             <p class="price">${p.price} грн</p>
             <button class="add-to-cart" onclick="addToCart(${p.id})">У КОШИК</button>
         </div>
     `).join('');
 }
 
-window.toggleDetails = function(id) {
-    const content = document.getElementById(`details-${id}`);
-    const btn = content.previousElementSibling;
-    
-    content.classList.toggle('active');
-    btn.classList.toggle('active');
-};
+window.openModal = function(id) {
+    const p = products.find(product => product.id === id);
+    if (!p) return;
+
+    const modal = document.getElementById("productModal");
+    const modalBody = document.getElementById("modal-body");
+
+    modalBody.innerHTML = `
+        <div class="modal-grid">
+            <div class="modal-images">
+                ${p.images ? p.images.map(img => `<img src="${img}" class="m-img">`).join('') : `<img src="${p.image}" class="m-img">`}
+            </div>
+            <div class="modal-info">
+                <h2>${p.name}</h2>
+                <div class="cat-tag">${p.cat}</div>
+                <p class="modal-desc">${p.desc}</p>
+                <p class="price" style="font-size: 2rem;">${p.price} грн</p>
+                <button class="add-to-cart" onclick="addToCart(${p.id}); closeModal();">ДОДАТИ В КОШИК</button>
+            </div>
+        </div>
+    `;
+    modal.style.display = "block";
+    document.body.style.overflow = "hidden";
+}
+
+window.closeModal = function() {
+    document.getElementById("productModal").style.display = "none";
+    document.body.style.overflow = "auto";
+}
+
+window.onclick = function(event) {
+    const modal = document.getElementById("productModal");
+    if (event.target == modal) closeModal();
+}
 
 window.filterProducts = function(category) {
     const filtered = category === 'all' ? products : products.filter(p => p.cat === category);
@@ -123,9 +80,11 @@ window.filterProducts = function(category) {
 
 window.addToCart = function(id) {
     const item = products.find(p => p.id === id);
-    cart.push(item);
-    localStorage.setItem('cart', JSON.stringify(cart));
-    updateCartCount();
+    if (item) {
+        cart.push(item);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount();
+    }
 };
 
 function updateCartCount() {
