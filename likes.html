@@ -27,10 +27,12 @@
         document.addEventListener('DOMContentLoaded', () => {
             const grid = document.getElementById('likes-grid');
             let likes = JSON.parse(localStorage.getItem('likes')) || [];
+            
             if (likes.length === 0) {
                 grid.innerHTML = "<p class='empty-msg'>У списку вподобань поки порожньо...</p>";
                 return;
             }
+
             grid.innerHTML = likes.map(p => `
                 <div class="product-card">
                     <div class="product-img-wrapper">
@@ -39,10 +41,25 @@
                     <div class="cat-tag">${p.cat}</div>
                     <h3>${p.name}</h3>
                     <p class="price">${p.price} грн</p>
-                    <button class="remove-btn" onclick="removeFromLikes(${p.id})">ВИДАЛИТИ</button>
+                    
+                    <button class="add-to-cart" style="margin-bottom: 10px;" onclick="addToCartFromLikes(${p.id})">
+                        У КОШИК
+                    </button>
+                    
+                    <button class="remove-btn" onclick="removeFromLikes(${p.id})">
+                        ВИДАЛИТИ
+                    </button>
                 </div>
             `).join('');
         });
+
+        window.addToCartFromLikes = function(id) {
+            if (typeof addToCart === "function") {
+                addToCart(id);
+                alert("Товар додано до кошика!");
+            }
+        };
+
         window.removeFromLikes = function(id) {
             let likes = JSON.parse(localStorage.getItem('likes')) || [];
             likes = likes.filter(p => p.id !== id);
