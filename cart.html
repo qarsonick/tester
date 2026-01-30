@@ -4,24 +4,51 @@
     <meta charset="UTF-8">
     <title>Кошик | TechGreen</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <header>
         <nav>
-            <div class="logo"><a href="index.html" style="text-decoration:none; color:inherit;">TECH<span>GREEN</span></a></div>
+            <div class="logo">TECH<span>GREEN</span></div>
             <ul class="nav-links">
-                <li><a href="index.html">На головну</a></li>
+                <li><a href="index.html">Головна</a></li>
+                <li><a href="index.html" class="dropbtn" style="text-decoration:none">НАЗАД ДО МАГАЗИНУ</a></li>
             </ul>
         </nav>
     </header>
+
     <main>
-        <h1 style="margin-bottom: 30px;">ТОВАРИ У КОШИКУ</h1>
-        <div id="cart-items" class="products"></div>
-        <div style="margin-top: 40px; text-align: right; border-top: 1px solid #333; padding-top: 20px;">
-            <h2 id="cart-total" style="color: var(--primary-green); margin-bottom: 20px;"></h2>
-            <button id="checkout-btn" class="add-to-cart" style="width: auto; padding: 15px 50px; display: none;">ОФОРМИТИ ЗАМОВЛЕННЯ</button>
-        </div>
+        <h2 class="section-title-center">ВАШ КОШИК</h2>
+        <div id="cart-grid" class="products"></div>
     </main>
-    <script src="cart.js"></script>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('cart-grid');
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            if (cart.length === 0) {
+                grid.innerHTML = "<p class='empty-msg'>Ваш кошик порожній...</p>";
+                return;
+            }
+            grid.innerHTML = cart.map((p, index) => `
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="${p.image}" class="product-img">
+                    </div>
+                    <div class="cat-tag">${p.cat}</div>
+                    <h3>${p.name}</h3>
+                    <p class="price">${p.price} грн</p>
+                    <button class="remove-btn" onclick="removeFromCart(${index})">ВИДАЛИТИ</button>
+                </div>
+            `).join('');
+        });
+        window.removeFromCart = function(index) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            location.reload();
+        };
+    </script>
 </body>
 </html>
